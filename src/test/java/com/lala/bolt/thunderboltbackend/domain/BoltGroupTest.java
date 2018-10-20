@@ -9,14 +9,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class GroupTest {
+public class BoltGroupTest {
     // 모든 도메인은
     // @Getter
     // @Setter
     // @Builder
 
     @Test
-    public void domain_group_member() {
+    public void domain_bolt_group_member() {
         // 그룹의 멤버는
         // id
         // name
