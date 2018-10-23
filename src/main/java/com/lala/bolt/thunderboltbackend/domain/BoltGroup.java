@@ -4,7 +4,6 @@ package com.lala.bolt.thunderboltbackend.domain;
 import lombok.*;
 import org.springframework.data.annotation.Id;
 
-
 @Getter
 @Setter
 @Builder
