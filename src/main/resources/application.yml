@@ -1,0 +1,15 @@
+spring:
+  profiles:
+    active: local
+
+  output:
+      ansi:
+        enabled: always
+
+  data:
+    mongodb:
+      uri: ENC(JgvnWQfk1K8fFHTqTy6OX8y08fqiU6DdUxL/QrzfCA/t+4pkGeOPe2gpiZdtZVGMKDBQ2bX0OzpfkwVC+f5fi16h0n0gmjWgMkwu5+UZykE=)
+
+jasypt:
+  encryptor:
+    bean: encryptorBean
