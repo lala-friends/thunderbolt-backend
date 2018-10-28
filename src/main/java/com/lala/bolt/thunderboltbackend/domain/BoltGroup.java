@@ -3,14 +3,16 @@ package com.lala.bolt.thunderboltbackend.domain;
 
 import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document
 @Getter
 @Setter
 @Builder
 public class BoltGroup {
 
     @Id
-    private long id;
+    private String id;
 
     private String name;
 
