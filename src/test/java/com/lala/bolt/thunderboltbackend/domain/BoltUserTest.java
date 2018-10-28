@@ -16,21 +16,21 @@ public class BoltUserTest {
 
     @Test
     public void domain_bolt_user_member () {
-        List<Long> groupList = new ArrayList<>();
-        groupList.add(1L);
-        groupList.add(2L);
+        List<String> groupList = new ArrayList<>();
+        groupList.add("1");
+        groupList.add("2");
 
         BoltUser boltUser = BoltUser.builder()
-                .id(1L)
+//                .id(1L)
                 .email("test@naver.com")
                 .name("test")
-                .groupId(groupList)
+                .groupIdList(groupList)
                 .build();
 
         assertThat(boltUser.getId()).isEqualTo(1L);
         assertThat(boltUser.getEmail()).isEqualTo("test@naver.com");
         assertThat(boltUser.getName()).isEqualTo("test");
-        assertThat(boltUser.getGroupId()).isEqualTo(groupList);
+        assertThat(boltUser.getGroupIdList()).isEqualTo(groupList);
 
     }
 }
