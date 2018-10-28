@@ -24,6 +24,7 @@ public class BoltEvent {
     private String creator;
     private String groupId;
     private List<String> joinedMember;
+    private String confirm;
     private String createDate;
     private String createUser;
     private String updateDate;

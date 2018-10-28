@@ -28,6 +28,7 @@ public class BoltEventTest {
                 .creator("whuk84@gmail.com")
                 .groupId("")
                 .joinedMember(joinedMember)
+                .confirm("N")
                 .createDate("2018-11-30 17:00")
                 .createUser("whuk84@gmail.com")
                 .updateDate("2018-11-30 17:00")
