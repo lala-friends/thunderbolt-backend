@@ -22,7 +22,7 @@ public class BoltGroupTest {
         // name
         // description
         BoltGroup group = BoltGroup.builder()
-        .id(1)
+//        .id(1)
         .name("group1")
         .description("group1 description")
         .build();
