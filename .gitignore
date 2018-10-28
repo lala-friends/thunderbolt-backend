@@ -130,4 +130,4 @@ modules.xml
 ### add Ryan
 .idea/*
 .DS_Store
-/src/test/noname.txt
+src/test/noname.txt
