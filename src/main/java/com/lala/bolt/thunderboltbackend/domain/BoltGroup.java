@@ -9,6 +9,9 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class BoltGroup {
 
     @Id
