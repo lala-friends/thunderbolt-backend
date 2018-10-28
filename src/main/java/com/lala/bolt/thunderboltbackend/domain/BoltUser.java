@@ -22,5 +22,5 @@ public class BoltUser {
 
     private String name;
 
-    private List<Long> groupId;
+    private List<String> groupId;
 }
