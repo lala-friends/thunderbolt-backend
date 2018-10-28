@@ -1,20 +1,22 @@
 package com.lala.bolt.thunderboltbackend.domain;
 
-import lombok.Builder;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.*;
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.List;
 
-
+@Document
 @Getter
 @Setter
 @Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@ToString
 public class BoltUser {
 
     @Id
-    private long id;
+    private String id;
 
     private String email;
 
