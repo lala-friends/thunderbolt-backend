@@ -16,13 +16,13 @@ import static org.junit.Assert.assertEquals;
 public class BoltGroupRepositoryTest {
 
     @Autowired
-    private BoltGroupRepository boltGroupReppository;
+    private BoltGroupRepository boltGroupRepository;
 
     @Test
     public void boltGroupRepositorySaveAndReadTest() {
 
-        boltGroupReppository.save(new BoltGroup(null, "group1", "des1")).block();
-        Flux<BoltGroup> boltGroupFlux = boltGroupReppository.findByName("group1");
+        boltGroupRepository.save(new BoltGroup(null, "group1", "des1")).block();
+        Flux<BoltGroup> boltGroupFlux = boltGroupRepository.findByName("group1");
 
         StepVerifier.create(boltGroupFlux)
                 .assertNext(boltGroup -> {
