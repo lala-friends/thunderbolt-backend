@@ -29,8 +29,8 @@ public class BoltUserRepositoryTest {
 
     @Before
     public void setup() {
-        boltGroupRepository.deleteAll().block();
-        boltUserRepository.deleteAll().block();
+        boltGroupRepository.deleteAll().block();    // 블록으로 해야함 TODO :: 찾아볼것
+        boltUserRepository.deleteAll().block();     // 블록으로 해야함 TODO :: 찾아볼것
 
         boltGroupRepository.save(new BoltGroup(null, "group1", "des1")).subscribe();
         Flux<BoltGroup> boltGroupFlux = boltGroupRepository.findByName("group1");
