@@ -3,6 +3,7 @@ package com.lala.bolt.thunderboltbackend.handler;
 
 import org.codehaus.jackson.map.ObjectMapper;
 import com.lala.bolt.thunderboltbackend.domain.BoltEvent;
+import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
+import org.springframework.web.reactive.function.client.ClientResponse;
+import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 import java.io.IOException;
@@ -46,7 +49,7 @@ public class BoltEventHandlerTest {
         List<String> joinedMember = new ArrayList<>();
         joinedMember.add("whuk84@gmail.com");
         BoltEvent boltEvent = BoltEvent.builder()
-                .title("모임2")
+                .title("모임5")
                 .description("평일에봅시다!")
                 .startDate("2018-12-31 17:00")
                 .endDate("")
@@ -60,15 +63,26 @@ public class BoltEventHandlerTest {
                 .updateUser("whuk84@gmail.com")
                 .build();
 
-        ObjectMapper mapper = new ObjectMapper();
-        String jsonInString = mapper.writeValueAsString(boltEvent);
+//        ObjectMapper mapper = new ObjectMapper();
+//        String jsonInString = mapper.writeValueAsString(boltEvent);
+//
+//        String result = webClient.post().uri("/boltEvent")
+//                .contentType(MediaType.APPLICATION_JSON_UTF8)
+//                .accept(MediaType.APPLICATION_JSON_UTF8)
+//                .body(Mono.just(jsonInString), String.class)
+//                .exchange()
+//                .toString();
+//        System.out.println(result);
 
-        String result = webClient.post().uri("/boltEvent")
+        webClient.post().uri("/boltEvent")
                 .contentType(MediaType.APPLICATION_JSON_UTF8)
                 .accept(MediaType.APPLICATION_JSON_UTF8)
-                .body(Mono.just(jsonInString), String.class)
+                .body(Mono.just(boltEvent), BoltEvent.class)
                 .exchange()
-                .toString();
-        System.out.println(result);
+                .expectStatus().isCreated()
+                .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
+                .expectBody()
+                .jsonPath("$.title").isNotEmpty()
+                .jsonPath("$.title").isEqualTo("모임5");
     }
 }
