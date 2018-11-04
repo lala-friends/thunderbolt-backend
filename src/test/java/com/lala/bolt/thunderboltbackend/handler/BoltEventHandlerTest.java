@@ -1,9 +1,6 @@
 package com.lala.bolt.thunderboltbackend.handler;
 
-
-import org.codehaus.jackson.map.ObjectMapper;
 import com.lala.bolt.thunderboltbackend.domain.BoltEvent;
-import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,15 +10,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.reactive.server.WebTestClient;
-import org.springframework.web.reactive.function.client.ClientResponse;
-import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Mono;
 
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
-
-import static org.assertj.core.api.Assertions.assertThat;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -33,14 +26,22 @@ public class BoltEventHandlerTest {
     @Test
     public void boltEventWebClientGetTest() {
 
-        String result = webClient.get().uri("/boltEvents").exchange().expectStatus()
-                .isOk()
-                .expectBody(String.class)
-                .returnResult()
-                .getResponseBody().toString();
+//        String result = webClient.get().uri("/boltEvents").exchange().expectStatus()
+//                .isOk()
+//                .expectBody(String.class)
+//                .returnResult()
+//                .getResponseBody().toString();
+//
+//        System.out.println(result);
+//        assertThat(result).isNotEmpty();
 
-        System.out.println(result);
-        assertThat(result).isNotEmpty();
+        webClient.get().uri("/boltEvents")
+                .accept(MediaType.APPLICATION_JSON_UTF8)
+                .exchange()
+                .expectStatus().isOk()
+                .expectHeader().contentType(MediaType.APPLICATION_JSON_UTF8)
+                .expectBodyList(BoltEvent.class);
+
     }
 
     @Test
@@ -85,4 +86,5 @@ public class BoltEventHandlerTest {
                 .jsonPath("$.title").isNotEmpty()
                 .jsonPath("$.title").isEqualTo("모임5");
     }
+
 }
